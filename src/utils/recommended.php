@@ -34,7 +34,7 @@ function load_recomended_recipes(){
         $total_price = str_replace('.', ',', number_format($total_price, 2));
 
         $html .= "
-        <a href='recipeView.php?id={$list_recipe[$key]["idReceita"]}' class='group'>
+        <a href='detalhes-receita.php?id={$list_recipe[$key]["idReceita"]}' class='group'>
         <div
             class='aspect-w-1 aspect-h-1 bg-gray-200 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-lg'>
             <img src='{$caminhoImg}'
