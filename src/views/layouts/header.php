@@ -29,8 +29,13 @@
 
         <div class="flex items-center justify-center">
           <a href="#">
-            <span>dicas da vovo</span>
+            <span>Dicas da Vovo</span>
           </a>
+        </div>
+
+        
+        <div class="flex">
+          <a href="./">Início</a>
         </div>
 
         <button class="p-3 bg-[#fa6163] rounded-xl">

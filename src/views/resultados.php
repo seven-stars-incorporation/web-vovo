@@ -1,5 +1,21 @@
 <?php
-include_once("./layouts/header.php")
+if (!isset($_POST["list-recipe-names"])){
+    header('location: index.php');
+}
+?>
+<?php
+include_once("./layouts/header.php");
+
+$listLikeName = array();
+
+foreach($_POST["list-recipe-names"] as $ingredient){
+  $listLikeName[] = $ingredienteClass->listLikeName($ingredient);
+}
+
+$listRecipes = array();
+
+
+
 ?>
   <main class="container mx-auto mt-10 mb-4 px-4 sm:px-8 max-w-[1440px]">
       <div class="mt-10 bg-white rounded-xl shadow-lg">
@@ -22,6 +38,8 @@ include_once("./layouts/header.php")
         </div>
       </div>
     </main>
+
+    
 <?php
 include_once("./layouts/footer.php")
 ?>

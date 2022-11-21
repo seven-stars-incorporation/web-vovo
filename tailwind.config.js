@@ -7,6 +7,7 @@ module.exports = {
   content: [
     "./src/*.{html,php}",
     "./src/views/*.{html,php}",
+    "./src/views/layouts/*.{html,php}",
     "./src/views/*/*.{html,php}",
   ],
   theme: {

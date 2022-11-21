@@ -5,15 +5,15 @@ include_once("./layouts/header.php")
     <div class="mt-10 bg-white rounded-xl shadow-lg">
       <div class="mx-auto py-8 px-4 sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8">
         <div class="flex flex-col">
-          <div class="flex gap-16">
+          <div class="flex flex-col-reverse lg:flex-row gap-16">
             <!-- img e botao -->
-            <div class="flex flex-col max-w-lg gap-5">
+            <div class="flex flex-col max-w-xl md:max-w-2xl mx-auto lg:max-w-lg gap-3 lg:gap-5">
               <div>
                 <img class="rounded-lg" src="../assets/images/receitas/hamburguer.jpg" alt="">
               </div>
 
               <div class="flex w-full items-center justify-between">
-                <div class="text-lg">
+                <div class="text-base lg:text-lg">
                   <span class="text-zinc-900">Custo aproximado:</span>
                   <span class="font-medium">R$ 14,99</span>
                 </div>
@@ -36,21 +36,21 @@ include_once("./layouts/header.php")
 
           <div class="grid grid-cols-2 mt-10 gap-4">
             <!-- ingredientes -->
-            <div class="border-t border-solid border-zinc-400 col-span-1 max-w-lg">
-              <ul class="mt-8">
-                <h2 class="uppercase text-2xl font-semibold my-4">INGREDIENTES</h2>
-                <li class="list-disc ml-4 my-2 text-lg flex items-center">
-                  <span>¼ de xícara (chá) de farinha de trigo</span>
-                  <span>R$ 4,23</span>
-                </li>
+            <div class="border-t border-solid border-zinc-400 col-span-2 lg:col-span-1 lg:max-w-lg max-w-none">
+              <ul class="mt-6 lg:mt-8">
+                <h2 class="uppercase text-2xl font-semibold my-4 inline-flex items-center">INGREDIENTES</h2>
+                <li class="list-disc ml-4 my-2 text-base md:text-lg break-words">¼ de xícara (chá) de farinha de trigo</li>
+                <li class="list-disc ml-4 my-2 text-base md:text-lg break-words">¼ de xícara (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaachá) de farinha de trigo</li>
+                <li class="list-disc ml-4 my-2 text-base md:text-lg break-words">¼ de xícara (chá) de farinha de trigo</li>
+                <li class="list-disc ml-4 my-2 text-base md:text-lg break-words">¼ de xícara (chá) de farinha de trigo</li>
               </ul>
             </div>
   
             <!-- modo de preparo -->
-            <div class="border-t border-solid border-zinc-400 col-span-1">
-              <ol class="mt-8">
+            <div class="border-t border-solid border-zinc-400 col-span-2 lg:col-span-1">
+              <ol class="mt-6 lg:mt-8">
                 <h2 class="uppercase text-2xl font-semibold my-4">MODO DE PREPARO</h2>
-                <li class="list-decimal ml-5 my-2 text-lg break-words">
+                <li class="list-decimal ml-5 my-2 text-base md:text-lg break-words">
                   Numa tigela grande, coloque o frango e tempere com a páprica, o sal e a pimenta. Junte o alho, a salsinha e misture bem para envolver todos os pedaços. Deixe descansar por 15 minutos em temperatura ambiente — assim o frango perde o gelo e absorve os sabores da marinada
                 </li>
               </ol>

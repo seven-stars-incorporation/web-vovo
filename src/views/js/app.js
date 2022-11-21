@@ -3,16 +3,17 @@ console.log("thiago gay") // QUAL FOI
 const searchForm = document.getElementById("search-form");
 const buttonSearch = document.getElementById("send-search");
 const suggestionList = document.getElementById("suggetions-list")
-
-searchForm.addEventListener("click", event => {
-    event.preventDefault();
-})
-
 const search = document.getElementById('search-input');
 const ingredientname = document.getElementById('ingredient-name');
 const addTagButton = document.getElementById('add-tag-button');
 const tagContainer = document.getElementById('tag-container');
 const listRecipeNames = document.getElementsByName('list-recipe-names')[0];
+
+buttonSearch.onclick = ()=>{
+  if (tagContainer.childElementCount == 0){
+    searchForm.preventDefault();
+  }
+}
 
 search.onkeyup = () => {
   valInput = search.value;
@@ -25,9 +26,6 @@ search.onkeyup = () => {
     ingredientname.innerText = '';
     suggestionList.classList.add("hidden");
   }
-
-  
-
 
   //ingredientesOBJ.filter(nameFilter);
   // se der conflito tu tira o script la do app, ele ta verificando se tem sexo no input p´ra poder mostrar as sugestoes
