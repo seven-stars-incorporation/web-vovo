@@ -8,11 +8,18 @@ if (!isset($_GET["id"])){
 include_once("./layouts/header.php");
 
 require_once("../models/ReceitaIngrediente.php");
+require_once("../models/Pesquisa.php");
 
+$idReceita = $_GET["id"];
+
+$pesquisa = new Pesquisa();
+
+$pesquisa->setIdReceita($idReceita);
+
+$pesquisa->write_pesquisa($pesquisa);
 
 $receitaIngrediente = new ReceitaIngrediente();
 
-$idReceita = $_GET["id"];
 
 $recipe = $receitaIngrediente->searchRecipeWithId($idReceita)[0];
 
