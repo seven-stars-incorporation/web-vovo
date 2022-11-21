@@ -1,0 +1,12 @@
+@import url("./outfit.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  body {
+    @apply bg-[#f6f5fa];
+  }
+}
