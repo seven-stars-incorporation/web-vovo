@@ -70,7 +70,7 @@ $caminhoImg = $default_path_img.$img_options;
 
             <!-- descricao meu pau na sua mao -->
             <div class="flex flex-col">
-              <h2 class="text-2xl font-bold text-zinc-900"><?php echo $recipe["nomeReceita"]; ?></h2>
+              <h2 class="text-2xl font-bold text-zinc-900 mt-6"><?php echo $recipe["nomeReceita"]; ?></h2>
             </div>
           </div>
 
@@ -90,11 +90,17 @@ $caminhoImg = $default_path_img.$img_options;
             <div class="border-t border-solid border-zinc-400 col-span-2 lg:col-span-1">
               <ol class="mt-6 lg:mt-8">
                 <h2 class="uppercase text-2xl font-semibold my-4">MODO DE PREPARO</h2>
-                <li class="list-decimal ml-5 my-2 text-base md:text-lg break-words">
+                
+                  
                 <?php
-                 echo $recipe["modoPreparo"];
+                $html = "";
+                 $modoPreparo = explode("\n", $recipe["modoPreparo"]);
+                 foreach($modoPreparo as $item){
+                  $html .= "<li class='list-decimal ml-5 my-2 text-base md:text-lg break-words'>$item</li>";
+                 }
+                
+                echo $html;
                 ?>
-                </li>
               </ol>
             </div>
           </div>

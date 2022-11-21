@@ -1,4 +1,4 @@
-console.log("thiago gay") // QUAL FOI
+console.log("caio gay") // QUAL FOI
 
 const searchForm = document.getElementById("search-form");
 const buttonSearch = document.getElementById("send-search");
@@ -20,7 +20,7 @@ search.onkeyup = () => {
   let containIngredient = ingredientesOBJ.some(item => item['nomeIngrediente'].split(' ').includes(valInput) && valInput.length > 2);
 
   if(containIngredient){
-    ingredientname.innerText = search.value;
+    ingredientname.innerText = search .value;
     suggestionList.classList.remove("hidden");
   }else {
     ingredientname.innerText = '';

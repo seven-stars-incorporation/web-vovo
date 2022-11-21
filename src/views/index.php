@@ -1,12 +1,13 @@
 <?php
 # LOAD PREFS
-if (isset($_GET["sharing"])) {
+if (isset($_GET["recipes"])) {
   $recipes_favs = $_GET['recipes'];
   $categories_favs = $_GET['categories'];
-  setcookie("recipes_favs", $recipes_favs, time() + (10 * 365 * 24 * 60 * 60), '/');
+  setcookie("recipes_favs", $recipes_favs, time() + (10 * 365 * 24 * 60 * 60), '/' );
   setcookie("categories_favs", $categories_favs, time() + (10 * 365 * 24 * 60 * 60), '/');
   header('location: index.php');
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -32,9 +33,9 @@ if (isset($_GET["sharing"])) {
 
 <body>
   <div>
-    <header class="flex items-center w-full bg-white shadow-md sticky inset-0 z-20">
+  <header class="flex items-center w-full bg-white shadow-md sticky inset-0 z-20">
       <nav class="flex px-4 py-6 justify-between max-w-[1440px] w-full mx-auto">
-        <button class="inline-flex sm:hidden items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-400">
+        <button class="inline-flex md:hidden items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-400">
           <img class="" src="./images/icons/menu-line.svg" alt="Icone menu hamburguer" />
         </button>
 
@@ -44,12 +45,17 @@ if (isset($_GET["sharing"])) {
           </a>
         </div>
 
-        <button class="p-3 bg-[#fa6163] rounded-xl">
+        
+        <div class="hidden md:flex items-center text-zinc-900">
+          <a class="underline-offset-8 underline text-lg" href="./">Início</a>
+        </div>
+
+        <a class="p-3 bg-[#fa6163] rounded-xl cursor-pointer" href="./favoritos.php">
           <div class="flex items-center justify-center">
             <span class="text-white">Meus Favoritos</span>
-            <img src="./images/icons/favorites.svg" alt="">
+            <img class="ml-2" src="./images/icons/favorites.svg" alt="">
           </div>
-        </button>
+        </a>
       </nav>
     </header>
 
@@ -90,7 +96,7 @@ if (isset($_GET["sharing"])) {
 
         <div class="mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 class="text-4xl font-semibold mb-10 text-zinc-900">Receitas recomendadas</h2>
-          <div class="grid grid-cols-1 gap-y-10 gap-x-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          <div class="grid grid-cols-1 gap-y-10 gap-x-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
             <!-- RECOMMENDED RECIPES -->
             <?php
             require_once("../models/Receita.php");
