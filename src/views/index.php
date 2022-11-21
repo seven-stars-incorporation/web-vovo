@@ -3,8 +3,8 @@
 if (isset($_GET["sharing"])) {
   $recipes_favs = $_GET['recipes'];
   $categories_favs = $_GET['categories'];
-  setcookie("recipes_favs", $recipes_favs, time() + (10 * 365 * 24 * 60 * 60));
-  setcookie("categories_favs", $categories_favs, time() + (10 * 365 * 24 * 60 * 60));
+  setcookie("recipes_favs", $recipes_favs, time() + (10 * 365 * 24 * 60 * 60), '/');
+  setcookie("categories_favs", $categories_favs, time() + (10 * 365 * 24 * 60 * 60), '/');
   header('location: index.php');
 }
 ?>
@@ -39,14 +39,14 @@ if (isset($_GET["sharing"])) {
         </button>
 
         <div class="flex items-center justify-center">
-          <a href="#">
-            <span>dicas da vovo</span>
+          <a class="text-2xl font-semibold" href="index.php">
+            Dicas da Vovo
           </a>
         </div>
 
         <button class="p-3 bg-[#fa6163] rounded-xl">
           <div class="flex items-center justify-center">
-            <span class="text-white">Favoritos</span>
+            <span class="text-white">Meus Favoritos</span>
             <img src="./images/icons/favorites.svg" alt="">
           </div>
         </button>

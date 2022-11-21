@@ -38,7 +38,7 @@
 
         public function listLikeName($name){
             $con = Conexao::conectar();
-            $querySelect = "SELECT * FROM tbingrediente WHERE nomeIngrediente LIKE \"%" . $name . "%\"";
+            $querySelect = "SELECT idIngrediente FROM tbingrediente WHERE nomeIngrediente LIKE \"%" . $name . "%\"";
             $resultado = $con->query($querySelect);
             $lista = $resultado->fetchAll();
             return $lista;

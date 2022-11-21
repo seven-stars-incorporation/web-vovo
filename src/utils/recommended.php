@@ -9,7 +9,9 @@ function load_recomended_recipes(){
 
     if (isset($_COOKIE['categories_favs'])){
         $categories_favs = explode(',', $_COOKIE['categories_favs']);
+        array_pop($categories_favs);
         $category = $categories_favs[array_rand($categories_favs, 1)];
+        $category = str_replace('"', '', $category);
     }
     
     $list_recipe = $recipe->read_with_name($category);

@@ -74,7 +74,7 @@ class ReceitaIngrediente
         return $list;
     }
 
-    private function searchRecipeWithId($id)
+    public function searchRecipeWithId($id)
     {
         $con = Conexao::conectar();
         $querySelect = "SELECT tbreceita.*, nomeIngrediente, valorIngrediente, descCategoria FROM tbreceitaingrediente
@@ -102,10 +102,15 @@ class ReceitaIngrediente
     {
         $listRecipe = array();
         $list = $this->searchIdRecipeWithIngredient($idIngrediente);
+        $max_recipes = 1;
         foreach ($list as $id){
+            if ($max_recipes == 0){
+                break;
+            }
             $id = $id[0];
             $tempListRecipe = $this->searchRecipeWithId($id);
             $listRecipe = array_merge($listRecipe, $tempListRecipe);
+            $max_recipes -= 1;
         }
 
         return $listRecipe;

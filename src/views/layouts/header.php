@@ -28,7 +28,7 @@
         </button>
 
         <div class="flex items-center justify-center">
-          <a class="text-2xl font-semibold" href="#">
+          <a class="text-2xl font-semibold" href="index.php">
             Dicas da Vovo
           </a>
         </div>

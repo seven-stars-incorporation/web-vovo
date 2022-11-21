@@ -45,7 +45,7 @@
             $con = Conexao::conectar();
             $querySelect = "SELECT tbreceita.* FROM tbcategoria
                             INNER JOIN tbreceita ON tbcategoria.idReceita = tbreceita.idReceita
-                                WHERE descCategoria LIKE  \"$category_name\" ";
+                                WHERE descCategoria LIKE \"$category_name\" ";
             $resultado = $con->query($querySelect);
             $lista = $resultado->fetchAll();
             return $lista;
