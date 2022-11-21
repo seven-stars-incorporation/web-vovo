@@ -77,9 +77,10 @@ class ReceitaIngrediente
     private function searchRecipeWithId($id)
     {
         $con = Conexao::conectar();
-        $querySelect = "SELECT tbreceita.*, nomeIngrediente, valorIngrediente FROM tbreceitaingrediente
+        $querySelect = "SELECT tbreceita.*, nomeIngrediente, valorIngrediente, descCategoria FROM tbreceitaingrediente
                             INNER JOIN tbingrediente ON tbreceitaingrediente.idIngrediente = tbingrediente.idIngrediente
                             INNER JOIN tbreceita on tbreceitaingrediente.idReceita = tbreceita.idReceita
+                            INNER JOIN tbcategoria on tbreceitaingrediente.idReceita = tbcategoria.idReceita
                             WHERE tbreceitaingrediente.idReceita LIKE " . $id . " GROUP BY tbreceita.idReceita";
         $result = $con->query($querySelect);
         $list = $result->fetchAll();

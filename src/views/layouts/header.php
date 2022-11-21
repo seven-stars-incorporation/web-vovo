@@ -23,27 +23,27 @@
   <div>
     <header class="flex items-center w-full bg-white shadow-md sticky inset-0 z-20">
       <nav class="flex px-4 py-6 justify-between max-w-[1440px] w-full mx-auto">
-        <button class="inline-flex sm:hidden items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-400">
+        <button class="inline-flex md:hidden items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-400">
           <img class="" src="./images/icons/menu-line.svg" alt="Icone menu hamburguer" />
         </button>
 
         <div class="flex items-center justify-center">
-          <a href="#">
-            <span>Dicas da Vovo</span>
+          <a class="text-2xl font-semibold" href="#">
+            Dicas da Vovo
           </a>
         </div>
 
         
-        <div class="flex">
-          <a href="./">Início</a>
+        <div class="hidden md:flex items-center text-zinc-900">
+          <a class="underline-offset-8 underline text-lg" href="./">Início</a>
         </div>
 
-        <button class="p-3 bg-[#fa6163] rounded-xl">
+        <a class="p-3 bg-[#fa6163] rounded-xl cursor-pointer" href="./favoritos.php">
           <div class="flex items-center justify-center">
-            <span class="text-white">Favoritos</span>
-            <img src="./images/icons/favorites.svg" alt="">
+            <span class="text-white">Meus Favoritos</span>
+            <img class="ml-2" src="./images/icons/favorites.svg" alt="">
           </div>
-        </button>
+        </a>
       </nav>
     </header>
 
