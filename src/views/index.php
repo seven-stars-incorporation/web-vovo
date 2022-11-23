@@ -70,13 +70,15 @@ if (isset($_GET["recipes"])) {
       <!-- sugestões -->
       <div class="relative">
         <ul class="absolute top-1 hidden w-full max-w-2xl bg-white rounded-xl max-h-[600px] py-3 px-2" id="suggetions-list">
-          <li id='add-tag-button' class="flex justify-between bg-white hover:bg-red-100 p-2 rounded-lg cursor-pointer transition-colors duration-150">
+          <!--<li id='add-tag-button' class="flex justify-between bg-white hover:bg-red-100 p-2 rounded-lg cursor-pointer transition-colors duration-150">
             <div class="flex gap-4">
               <img src="./images/icons/add.svg" alt="Icone adicionar">
               <span id="ingredient-name">Nome do ingrediente</span>
             </div>
             <span class="add">Adicionar</span>
-          </li>
+          </li>-->
+
+          
         </ul>
       </div>
 
