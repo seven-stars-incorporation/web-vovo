@@ -73,7 +73,7 @@ if (isset($_GET["recipes"])) {
 
       <!-- sugestões -->
       <div class="relative">
-        <ul class="absolute top-1 hidden w-full max-w-2xl bg-white rounded-xl max-h-[600px] py-3 px-2" id="suggetions-list">
+        <ul class="absolute top-1 hidden w-full max-w-2xl bg-white rounded-xl max-h-[600px] py-3 px-2 z-10" id="suggetions-list">
           <!--<li id='add-tag-button' class="flex justify-between bg-white hover:bg-red-100 p-2 rounded-lg cursor-pointer transition-colors duration-150">
             <div class="flex gap-4">
               <img src="./images/icons/add.svg" alt="Icone adicionar">
@@ -103,31 +103,31 @@ if (isset($_GET["recipes"])) {
 
           <h2 class="text-2xl font-semibold mb-10 text-zinc-900">Categorias</h2>
           <div class="w-full flex gap-6 overflow-x-scroll overflow-y-hidden sm:overflow-x-hidden scroll-mx-4">
-            <a href="#" class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+            <a href='index.php?categoria=recomendados' class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
               <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
                 <i class="ph-cooking-pot-fill text-3xl text-amber-500"></i>
               </div>
               <span>Todos</span>
             </a>
-            <a href="#" class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+            <a href='index.php?categoria=PIZZA' class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
               <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
                 <i class="ph-pizza-fill text-3xl text-amber-500"></i>
               </div>
               <span>Pizza</span>
             </a>
-            <a href="#" class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+            <a href='index.php?categoria=DRINKS' class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
               <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
                 <i class="ph-brandy-fill text-3xl text-amber-500"></i>
               </div>
               <span>Drinks</span>
             </a>
-            <a href="#" class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+            <a href='index.php?categoria=PEIXES' class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
               <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
                 <i class="ph-fish-simple-fill text-3xl text-amber-500"></i>
               </div>
               <span>Peixe</span>
             </a>
-            <a href="#" class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+            <a href='index.php?categoria=PÃES' class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
               <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
                 <box-icon 
                   name="baguette"
@@ -142,7 +142,7 @@ if (isset($_GET["recipes"])) {
               <span>Pães</span>
             </a>
           
-            <a href="#  " class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+            <a href='index.php?categoria=SOPAS' class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
               <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
               <box-icon
                 name='bowl-hot' 
@@ -155,7 +155,7 @@ if (isset($_GET["recipes"])) {
               </div>
               <span>Sopas</span>
             </a>
-            <a href="#" class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+            <a href='index.php?categoria=BOLOS DE LIQUIDIFICADOR' class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
               <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
               <box-icon 
                 type='solid' 
@@ -172,15 +172,28 @@ if (isset($_GET["recipes"])) {
           </div>
         </div>
 
-        <div class="mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 class="text-4xl font-semibold mb-10 text-zinc-900">Receitas recomendadas</h2>
-          <div class="grid grid-cols-1 gap-y-10 gap-x-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            <!-- RECOMMENDED RECIPES -->
-            <?php
+        <?php
+            $category = @$_GET['categoria'];
+
             require_once("../models/Receita.php");
             require_once("../models/ReceitaIngrediente.php");
             require_once("../utils/recommended.php");
+
             $html = load_recomended_recipes();
+
+            $text = 'Receitas recomendadas';
+
+            if ($category != '' && $category != 'recomendados'){
+              $text = $category;
+              $html = load_by_category($category);
+            }
+        ?>
+
+        <div class="mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+          <h2 class="text-4xl font-semibold mb-10 text-zinc-900"><?php echo $text; ?></h2>
+          <div class="grid grid-cols-1 gap-y-10 gap-x-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            <!-- RECOMMENDED RECIPES -->
+            <?php
 
             echo $html;
 
