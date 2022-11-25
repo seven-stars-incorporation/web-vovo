@@ -4,9 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   body {
     @apply bg-[#f6f5fa];
+  }
+}
+
+@layer components {
+  .cat-link:hover {
+    @apply bg-[#fffac7] transition-colors duration-150;
+  }
+
+  .cat-link:hover .cat-icon {
+    @apply bg-[#f0ebb6] transition-colors duration-150 border-transparent;
+  }
+  #categorias-receitas {
+    scrollbar-width: thin;
   }
 }

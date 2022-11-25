@@ -15,7 +15,7 @@ function load_recomended_recipes(){
     }
     
     $list_recipe = $recipe->read_with_name($category);
-    $MAX_RECIPE_SHOW = 9;
+    $MAX_RECIPE_SHOW = 12;
     $rand_keys = array_rand($list_recipe, $MAX_RECIPE_SHOW);
 
     $html = "";
@@ -38,7 +38,7 @@ function load_recomended_recipes(){
         $html .= "
         <a href='detalhes-receita.php?id={$list_recipe[$key]["idReceita"]}' class='group'>
         <div
-            class='aspect-w-1 aspect-h-1 bg-gray-200 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-lg'>
+            class='aspect-w-1 aspect-h-1 bg-gray-200 xl:aspect-w-6 xl:aspect-h-7 w-full overflow-hidden rounded-lg'>
             <img loading='lazy' src='{$caminhoImg}'
             alt='{$list_recipe[$key]["nomeReceita"]}'
             class='h-full w-full object-cover object-center group-hover:opacity-75' />

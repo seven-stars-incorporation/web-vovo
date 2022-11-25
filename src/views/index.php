@@ -16,6 +16,10 @@ if (isset($_GET["recipes"])) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <script src="https://unpkg.com/phosphor-icons"></script>
   <link href="./css/styles.css" rel="stylesheet" />
   <script>
   <?php
@@ -59,7 +63,7 @@ if (isset($_GET["recipes"])) {
       </nav>
     </header>
 
-    <form class="max-w-5xl w-full mx-auto px-4 sm:px-8 mt-10" action="resultados.php" method="POST" id="search-form">
+    <form class="max-w-5xl w-full mx-auto px-4 sm:px-8 mt-10 z-10" action="resultados.php" method="POST" id="search-form">
       <label class="bg-gray-50 flex rounded-2xl border-t border-gray-100 shadow-md pl-4 gap-3" for="search-input">
         <img src="./images/icons/search.svg" alt="Icone de pesquisa">
         <input type="hidden" name="list-recipe-names">
@@ -95,10 +99,82 @@ if (isset($_GET["recipes"])) {
 
     <main class="container mx-auto mt-10 mb-4 px-4 sm:px-8 max-w-[1440px]">
       <div class="mt-10 bg-white rounded-xl shadow-lg">
+        <div id="categorias-receitas" class="w-full px-8 py-6 max-w-7xl mx-auto">
+
+          <h2 class="text-2xl font-semibold mb-10 text-zinc-900">Categorias</h2>
+          <div class="w-full flex gap-6 overflow-x-scroll overflow-y-hidden sm:overflow-x-hidden scroll-mx-4">
+            <a href="#" class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+              <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
+                <i class="ph-cooking-pot-fill text-3xl text-amber-500"></i>
+              </div>
+              <span>Todos</span>
+            </a>
+            <a href="#" class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+              <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
+                <i class="ph-pizza-fill text-3xl text-amber-500"></i>
+              </div>
+              <span>Pizza</span>
+            </a>
+            <a href="#" class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+              <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
+                <i class="ph-brandy-fill text-3xl text-amber-500"></i>
+              </div>
+              <span>Drinks</span>
+            </a>
+            <a href="#" class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+              <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
+                <i class="ph-fish-simple-fill text-3xl text-amber-500"></i>
+              </div>
+              <span>Peixe</span>
+            </a>
+            <a href="#" class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+              <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
+                <box-icon 
+                  name="baguette"
+                  color="#f59e0b"
+                  width="32"
+                  height="32"
+                  type="solid"
+                  class="w-7 h-7"
+                >
+                </box-icon>
+              </div>
+              <span>Pães</span>
+            </a>
+          
+            <a href="#  " class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+              <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
+              <box-icon
+                name='bowl-hot' 
+                color="#f59e0b"
+                width="32"
+                height="32"
+                type="solid"
+                class="w-7 h-7">
+              </box-icon>
+              </div>
+              <span>Sopas</span>
+            </a>
+            <a href="#" class="inline-flex flex-col justify-start pt-2 pb-6 items-center border border-zinc-300 rounded-full bg-white cat-link">
+              <div class="rounded-full flex items-center justify-center p-4 m-2 bg-zinc-100 cat-icon">
+              <box-icon 
+                type='solid' 
+                name='cake'
+                color="#f59e0b"
+                width="32"
+                height="32"
+                type="solid"
+                class="w-7 h-7">
+              </box-icon>
+              </div>
+              <span>Bolos</span>
+            </a>
+          </div>
+        </div>
 
         <div class="mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 class="text-4xl font-semibold mb-10 text-zinc-900">Receitas recomendadas</h2>
-          <div class="grid grid-cols-1 gap-y-10 gap-x-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
+          <div class="grid grid-cols-1 gap-y-10 gap-x-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             <!-- RECOMMENDED RECIPES -->
             <?php
             require_once("../models/Receita.php");
