@@ -12,7 +12,7 @@ read_json().then(value => {
 })
 
 buttonSearch.onclick = () => {
-  if (tagContainer.childElementCount == 0) {
+  if (tagContainer.childElementCount === 0) {
     searchForm.preventDefault();
   }
 }
@@ -67,6 +67,7 @@ function filter(ingredient) {
     })
 
     ingredientName = tempSplitName.join(' ');
+    ingredientName = ingredientName.endsWith('s') ? ingredientName.substring(0, ingredientName.length -1) : ingredientName;
     if (ingredientName.length > 0) {
       result.push(ingredientName.trim());
     }
