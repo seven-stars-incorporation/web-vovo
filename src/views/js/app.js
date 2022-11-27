@@ -2,7 +2,6 @@ const searchForm = document.getElementById("search-form");
 const buttonSearch = document.getElementById("send-search");
 const suggestionList = document.getElementById("suggetions-list")
 const search = document.getElementById('search-input');
-const ingredientname = document.getElementById('ingredient-name');
 const tagContainer = document.getElementById('tag-container');
 const listRecipeNames = document.getElementsByName('list-recipe-names')[0];
 var data = [];
@@ -34,7 +33,7 @@ search.onkeyup = () => {
   ingredientesOBJ.filter(filter);
   result = [...new Set(result)];
   html = '';
-  result.forEach((item, index) => {
+  result.forEach(item => {
     html += `
     <li onclick="addTag('${item}')" class="flex justify-between bg-white hover:bg-red-100 p-2 rounded-lg cursor-pointer transition-colors duration-150">
       <div class="flex gap-4">
