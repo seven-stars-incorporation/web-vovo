@@ -68,7 +68,7 @@
               <div class="absolute w-full h-full bg-zinc-900 rounded-sm border-white border-2"></div>
             </div>
             <div class="flex relative h-full max-w-xs">
-              <a href="index.php?categoria=SALADAS, MOLHOS E ACOMPANHAMENTOS" class="category-link" title="Clique para adicionar os ingredientes">
+              <a href="index.php?categoria=Saladas,%20Molhos%20e%20Acompanhamentos" class="category-link" title="Clique para adicionar os ingredientes">
                 <span class="link">Saladas, Molhos e Acompanhamentos</span>
               </a>
               <div class="absolute w-full h-full bg-zinc-900 rounded-sm border-white border-2"></div>

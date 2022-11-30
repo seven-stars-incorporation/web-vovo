@@ -5,9 +5,11 @@
   require_once("../models/ReceitaIngrediente.php");
 
   $ingredienteClass = new Ingrediente();
+  $receitasClass = new Receita();
   $listIngrediente  = $ingredienteClass->listar();
   $json = json_encode($listIngrediente);
-  
+  $receitas = $receitasClass->listar();
+  $jsonReceitas = json_encode($receitas);
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +27,9 @@
   <script defer src="./js/app.js"></script>
   <script defer src="./js/main.js"></script>
   <script defer src="./js/carousel.js"></script>
-  <script>const ingredientesOBJ = <?php echo ($json); ?>;</script>
+  <script>const ingredientesOBJ = <?php echo ($json); ?>;
+      const receitasOBJ = <?php echo ($jsonReceitas); ?>;
+  </script>
 </head>
 <body>
   <header class="bg-white border-b border-zinc-200 py-4 sticky inset-0 z-50">

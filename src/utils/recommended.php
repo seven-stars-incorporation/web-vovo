@@ -58,7 +58,7 @@ function load_by_category($category){
     $recipe_ingredient = new ReceitaIngrediente();
     
     $list_recipe = $recipe->read_with_name($category);
-    $MAX_RECIPE_SHOW = 12;
+    $MAX_RECIPE_SHOW = min(count($list_recipe), 12);
     $rand_keys = array_rand($list_recipe, $MAX_RECIPE_SHOW);
 
     $html = "";

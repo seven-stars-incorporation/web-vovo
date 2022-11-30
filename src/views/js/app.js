@@ -17,6 +17,7 @@ buttonSearch.onclick = () => {
 }
 
 var result = [];
+var resultRecipe = [];
 
 search.onkeyup = () => {
   /*let containIngredient = ingredientesOBJ.some(item => item['nomeIngrediente'].split(' ').includes(valInput) && valInput.length > 2);
@@ -29,9 +30,30 @@ search.onkeyup = () => {
     suggestionList.classList.add("hidden");
   }*/
   result = [];
-  ingredientesOBJ.filter(filter);
+  resultRecipe = [];
+  let html = '';
+
+  receitasOBJ.filter(recipeFilter);
+  resultRecipe = resultRecipe.filter((arr, index, self) =>
+      index === self.findIndex((t) => (t.idReceita === arr.idReceita || t.nomeReceita === arr.nomeReceita)))
+  resultRecipe.forEach(item => {
+    html += `
+    <div class="flex relative h-full w-full">
+        <li onclick="goToRecipe('${item["idReceita"]}')" class="flex w-full justify-between bg-white hover:bg-[#98dede] p-2 rounded-sm cursor-pointer duration-200 text-zinc-900 z-10 border-b border-zinc-300 hover:border-b-transparent hover:translate-x-1 hover:-translate-y-1 transition-all ease-out" title="Clique para adicionar os ingredientes">
+          <div class="flex gap-4 items-center">
+            <i class="ph-plus-bold text-lg"></i>
+            <span id="ingredient-name">${item["nomeReceita"]}</span>
+          </div>
+          <span class="add">Ir Para Receita</span>
+        </li>
+        <div class="absolute w-full h-full bg-zinc-900 rounded-sm border-white border-2"></div>
+      </div>
+    `;
+  });
+
+  ingredientesOBJ.filter(filterIngredient);
   result = [...new Set(result)];
-  html = '';
+
   result.forEach(item => {
     html += `
     <div class="flex relative h-full w-full">
@@ -51,11 +73,30 @@ search.onkeyup = () => {
 
 }
 
-function filter(ingredient) {
+function recipeFilter(recipe) {
+  let valInput = search.value;
+  let recipeName = String(recipe['nomeReceita']).toLowerCase();
+
+  const re = new RegExp(valInput + '[a-zà-ÿ ]*', 'i')
+  let match = recipeName.match(re)
+
+  if (match != null && valInput.length > 2) {
+    suggestionList.classList.remove("hidden");
+    console.log(valInput, match, re)
+
+    resultRecipe.push({"nomeReceita": match[0], "idReceita" : recipe['idReceita']});
+  }
+}
+
+function goToRecipe(idRecipe){
+  window.location.href = `./detalhes-receita.php?id=${idRecipe}`;
+}
+
+function filterIngredient(ingredient) {
   let valInput = search.value;
   let ingredientName = String(ingredient['nomeIngrediente']).toLowerCase();
   const re = new RegExp(valInput + '[a-zà-ÿ]*', 'i')
-  match = ingredientName.match(re)
+  let match = ingredientName.match(re)
 
 
   if (match != null && valInput.length > 2) {
