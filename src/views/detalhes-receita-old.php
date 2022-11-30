@@ -1,5 +1,3 @@
-<?php include_once("./layouts/header.php")?>
-
 <?php
 if (!isset($_GET["id"])){
     header('location: index.php');
@@ -7,6 +5,7 @@ if (!isset($_GET["id"])){
 ?>
 
 <?php
+include_once("./layouts/header.php");
 
 require_once("../models/ReceitaIngrediente.php");
 require_once("../models/Pesquisa.php");
@@ -45,36 +44,34 @@ $caminhoImg = $default_path_img.$img_options;
 ?>
   <main class="container mx-auto mt-10 mb-4 px-4 sm:px-8 max-w-[1440px]">
     <div class="mt-10 bg-white rounded-xl shadow-lg">
-      <div class="mx-auto pt-4 pb-8 px-4 sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div class="mx-auto py-8 px-4 sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8">
         <div class="flex flex-col">
           <div class="/*flex flex-col-reverse lg:flex-row gap-16*/">
-            <!-- descricao meu pau na sua mao -->
-            <div class="flex flex-col justify-center items-center my-4">
-              <h2 class="text-2xl lg:text-3xl font-bold text-zinc-900 mt-6"><?php echo $recipe["nomeReceita"]; ?></h2>
-            </div>
-            
             <!-- img e botao -->
             <div class="flex flex-col max-w-xl md:max-w-2xl mx-auto lg:max-w-lg gap-3 lg:gap-5">
               <div>
                 <img class="rounded-lg" src="<?php echo $caminhoImg; ?>" alt="">
               </div>
 
-              <div class="flex w-full items-center justify-between py-2">
-                <div class="text-base">
+              <div class="flex w-full items-center justify-between">
+                <div class="text-base lg:text-lg">
                   <span class="text-zinc-900">Custo aproximado:</span>
                   <span class="font-medium">R$ <?php echo $total_price; ?></span>
                 </div>
-                <div class="relative flex h-full">
-                  <button onclick="favoritos()" class="btn-primary bg-[#ffcc33] hover:bg-[#98dede] text-zinc-900 fav-active">
-                    <i class="ph-bookmark-simple-fill text-2xl"></i>
-                      <span class="block">Adicionar aos Favoritos</span>
-                      <span class="hidden">Remover dos Favoritos</span>
-                    </button>
-                    <div class="absolute w-full h-full bg-zinc-900 rounded-sm"></div>
-                </div>
+                <button onclick="favoritos()" class="inline-flex items-center justify-center gap-4 h-12 max-w-[128px] py-2 px-4 bg-[#fa6163] rounded-xl">
+                  <div class="flex items-center justify-center">
+                    <span class="text-white">Favoritar</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 2h14a1 1 0 0 1 1 1v19.143a.5.5 0 0 1-.766.424L12 18.03l-7.234 4.536A.5.5 0 0 1 4 22.143V3a1 1 0 0 1 1-1zm13 2H6v15.432l6-3.761 6 3.761V4z" 
+                    fill="rgba(255,255,255,1)"/></svg>
+                  </div>
+                </button>
               </div>
             </div>
 
+            <!-- descricao meu pau na sua mao -->
+            <div class="flex flex-col">
+              <h2 class="text-2xl font-bold text-zinc-900 mt-6"><?php echo $recipe["nomeReceita"]; ?></h2>
+            </div>
           </div>
 
           <div class="grid grid-cols-2 mt-10 gap-4">
@@ -121,4 +118,6 @@ $caminhoImg = $default_path_img.$img_options;
     }
     
   </script>
-<?php include_once("./layouts/footer.php")?><?php
+<?php
+include_once("./layouts/footer.php")
+?>

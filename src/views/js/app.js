@@ -1,7 +1,7 @@
 const searchForm = document.getElementById("search-form");
 const buttonSearch = document.getElementById("send-search");
-const suggestionList = document.getElementById("suggetions-list")
-const search = document.getElementById('search-input');
+const suggetionsContainer = document.getElementById("suggetionsContainer");
+const search = document.getElementById('search');
 const tagContainer = document.getElementById('tag-container');
 const listRecipeNames = document.getElementsByName('list-recipe-names')[0];
 var data = [];
@@ -28,24 +28,26 @@ search.onkeyup = () => {
     ingredientname.innerText = '';
     suggestionList.classList.add("hidden");
   }*/
-  
   result = [];
   ingredientesOBJ.filter(filter);
   result = [...new Set(result)];
   html = '';
   result.forEach(item => {
     html += `
-    <li onclick="addTag('${item}')" class="flex justify-between bg-white hover:bg-red-100 p-2 rounded-lg cursor-pointer transition-colors duration-150">
-      <div class="flex gap-4">
-        <img src="./images/icons/add.svg" alt="Icone adicionar">
-        <span id="ingredient-name">${item}</span>
+    <div class="flex relative h-full w-full">
+        <li onclick="addTag('${item}')" class="flex w-full justify-between bg-white hover:bg-[#98dede] p-2 rounded-sm cursor-pointer duration-200 text-zinc-900 z-10 border-b border-zinc-300 hover:border-b-transparent hover:translate-x-1 hover:-translate-y-1 transition-all ease-out" title="Clique para adicionar os ingredientes">
+          <div class="flex gap-4 items-center">
+            <i class="ph-plus-bold text-lg"></i>
+            <span id="ingredient-name">${item}</span>
+          </div>
+          <span class="add">Adicionar</span>
+        </li>
+        <div class="absolute w-full h-full bg-zinc-900 rounded-sm border-white border-2"></div>
       </div>
-      <span class="add">Adicionar</span>
-    </li>
     `;
   });
 
-  suggestionList.innerHTML = html;
+  suggetionsContainer.innerHTML = html;
 
 }
 
@@ -82,19 +84,20 @@ async function read_json() {
 
 function addTag(name) {
   let id = 'tag-' + tagContainer.childElementCount + 1;
-  tagContainer.innerHTML += `<div id="${id}" class="bg-red-100 inline-flex items-center text-sm rounded mt-2 mr-1 overflow-hidden">
-  <span class="ml-2 mr-1 leading-relaxed truncate max-w-xs px-1 text-zinc-800" x-text="tag">
-    ${name}
-  </span>
-  <a onclick="removeItem('${id}')" class="inline-flex items-center justify-center cursor-pointer w-7 h-8 align-middle text-zinc-800 bg-red-200 hover:bg-red-300 focus:outline-none shadow-md hover:shadow-none">
-  <svg class="w-6 h-6 fill-zinc-600 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"/>
-  </svg>
-  </a>
-  </div>`;
+  tagContainer.innerHTML += `<div id="${id}" class="bg-[#ffed9f] inline-flex items-center text-sm rounded mt-2 mr-1 overflow-hidden">
+  <span class="ml-2 mr-1 leading-relaxed truncate max-w-xs px-1" x-text="tag">${name}</span>
+  <button type="button" onclick="removeItem('${id}')" class="w-6 h-8 inline-block align-middle hover:bg-[#ffd148] transition-colors duration-200 ease-out focus:outline-none">
+    <svg class="w-6 h-6 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path fill-rule="evenodd"
+        d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z" />
+    </svg>
+  </button>
+</div>`;
+
 
   listRecipeNames.value += name + ',';
   search.value = '';
-  suggestionList.classList.add("hidden");
+  suggetionsContainer.innerHTML = '';
 
 }
 

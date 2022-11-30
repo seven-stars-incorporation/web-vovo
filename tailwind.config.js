@@ -5,19 +5,22 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
-    "./src/*.{html,php}",
-    "./src/views/*.{html,php}",
-    "./src/views/layouts/*.{html,php}",
-    "./src/views/*/*.{html,php}",
+    "./src/*.{html,js,php}",
+    "./src/*/*.{html,js,php}",
+    "./src/views/*.{html,js,php}",
+    "./src/views/layouts/*.{html,js,php}",
   ],
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Outfit-Variable', ...defaultTheme.fontFamily.sans],
+        'sans': ['Outfit', ...defaultTheme.fontFamily.sans],
       }
     },
+    // colors: {
+    //   ...colors
+    // }
   },
-  plugins:[
+  plugins: [
     require('@tailwindcss/aspect-ratio'),
-  ]
+  ],
 }

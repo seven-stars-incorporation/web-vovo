@@ -115,6 +115,20 @@ class ReceitaIngrediente
 
         return $listRecipe;
     }
+
+    public function maisBaratas($limit){
+        $con = Conexao::conectar();
+        $querySelect = "SELECT tbReceita.*, descCategoria, SUM(valorIngrediente) AS `soma` FROM tbreceitaingrediente
+                        INNER JOIN tbingrediente ON tbreceitaingrediente.idIngrediente = tbingrediente.idIngrediente
+                        INNER JOIN tbReceita ON tbreceitaingrediente.idReceita = tbReceita.idReceita
+                        INNER JOIN tbcategoria ON tbreceitaingrediente.idReceita = tbcategoria.idReceita
+                        GROUP BY idReceita
+                        ORDER BY SUM(valorIngrediente)
+                        LIMIT {$limit};";
+        $resultado = $con->query($querySelect);
+        $lista = $resultado->fetchAll();
+        return $lista;
+    }
 }
 
 ?>

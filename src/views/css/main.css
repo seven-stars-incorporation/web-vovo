@@ -1,24 +1,52 @@
-@import url("./outfit.css");
+@import url("outfit.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  html,
   body {
-    @apply bg-[#f6f5fa];
+    scroll-behavior: smooth;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-white;
+  }
+
+  img {
+    display: inline !important;
   }
 }
 
 @layer components {
-  .cat-link:hover {
-    @apply bg-[#fffac7] transition-colors duration-150;
+  .btn-primary {
+    @apply z-10 inline-flex translate-x-[2px] -translate-y-[2px] items-center justify-center gap-1 rounded-sm border-none bg-[#ff7f32] px-3 py-3 font-bold text-white transition-all duration-200 ease-in hover:translate-x-[6px] hover:-translate-y-[6px] hover:bg-[#ffaa00] sm:px-4 sm:py-3;
   }
 
-  .cat-link:hover .cat-icon {
-    @apply bg-[#f0ebb6] transition-colors duration-150 border-transparent;
+  .btn-link {
+    @apply z-10 inline-flex translate-x-[2px] -translate-y-[2px] items-center justify-center gap-1 rounded-sm border-none bg-[#ff7f32] px-3 py-3 font-bold text-white transition-all duration-200 ease-in hover:translate-x-[6px] hover:-translate-y-[6px] hover:bg-[#ffaa00] sm:px-4 sm:py-3;
   }
-  #categorias-receitas {
-    scrollbar-width: thin;
+
+  .category-link {
+    @apply z-10 flex w-full cursor-pointer justify-between rounded-sm border border-zinc-300 bg-white p-2 px-4 text-zinc-900 transition-all duration-200 ease-out hover:translate-x-1 hover:-translate-y-1 hover:border-transparent hover:border-b-transparent hover:bg-[#98dede];
+  }
+
+  .input-search {
+    @apply placeholder:transition-opacity placeholder:duration-500;
+  }
+
+  .fade-out {
+    top: -110%;
+    opacity: 0;
+  }
+  .favorite {
+    @apply absolute -top-2 -right-2 z-50 flex h-9 w-9 opacity-0 transition-opacity duration-200 ease-out;
+  }
+
+  .receita:hover .favorite {
+    @apply opacity-100;
   }
 }

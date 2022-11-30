@@ -43,7 +43,7 @@
 
         public function read_with_name($category_name){
             $con = Conexao::conectar();
-            $querySelect = "SELECT tbreceita.* FROM tbcategoria
+            $querySelect = "SELECT tbreceita.*, descCategoria FROM tbcategoria
                             INNER JOIN tbreceita ON tbcategoria.idReceita = tbreceita.idReceita
                                 WHERE descCategoria LIKE \"$category_name\" ";
             $resultado = $con->query($querySelect);
