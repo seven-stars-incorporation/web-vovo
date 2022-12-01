@@ -36,11 +36,12 @@
     <nav class="max-w-[1440px] flex mx-auto py-2 justify-between px-4 items-center gap-2">
       <a class="logo" href="./">
         <div class="hidden lg:block">
-          <img src="./images/logo.svg" class="w-40">
+          <img src="./images/vovo.png" class="w-20">
+          <span>Dicas da Vovó</span>
         </div>
 
         <div class="block lg:hidden">
-          <img src="./images/mark.svg" class="w-12 sm:w-16">
+          <img src="./images/vovo.png" class="w-12 sm:w-16">
         </div>
       </a>
 
